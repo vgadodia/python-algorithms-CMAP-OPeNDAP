@@ -20,7 +20,7 @@ from bokeh.embed import components
 from tqdm import tqdm_notebook as tqdm
 from netCDF4 import num2date, date2num
 
-# Regional Map Function
+# Regional Map Plotting Functions
 def regionalMap(tables, variabels, dt1, dt2, lat1, lat2, lon1, lon2, depth1, depth2, fname, exportDataFlag):
     for i in tqdm(range(len(tables)), desc='overall'):
         
@@ -46,7 +46,6 @@ def regionalMap(tables, variabels, dt1, dt2, lat1, lat2, lon1, lon2, depth1, dep
         
         bokehMap(varData, unit, 'regional', lats, lons, unit, 'OTHER', variables[i])
 
-# BokehMap Function
 def bokehMap(data, subject, fname, lat, lon, units, tables, variabels):
     TOOLS="crosshair,pan,zoom_in,wheel_zoom,zoom_out,box_zoom,reset,save,"
     p = []
@@ -89,7 +88,7 @@ def bokehMap(data, subject, fname, lat, lon, units, tables, variabels):
         show(column(p))
     return
 
-# NetCDF4 file(s) to read from:
+# File to read data from:
 xFile = xr.open_dataset('http://3.88.71.225:80/thredds/dodsC/las/id-a1d60eba44/data_usr_local_tomcat_content_cbiomes_20190510_20_darwin_v0.2_cs510_darwin_v0.2_cs510_nutrients.nc.jnl')
 
 # Testing Space
